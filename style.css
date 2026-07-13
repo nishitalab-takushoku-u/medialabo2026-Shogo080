@@ -1,6 +1,13 @@
-p{
-    color:blue;
-}
 h1{
     background:black;
+     color:white;
+}
+h2{
+   font-family: cursive;
+	color:rgb(235, 44, 10);
+	background:linear-gradient(to right, White, #afffc2);
+	margin:5px;
+}
+div{
+    color:blue;
 }
