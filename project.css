@@ -1,3 +1,8 @@
 h1{
-    color:black;
+    color:rgb(42, 17, 235);
+    border: 2px solid black;
+    border-radius: 10px;
+}
+p{
+    border-bottom: 2px solid black;
 }
