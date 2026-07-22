@@ -1,4 +1,19 @@
-h1{
+h1 {
+  position: relative;
+  background: #f1f8ff;
+  padding: 0.25em 0.5em;
+  border-left: solid 2em #5c9ee7;
+}
+
+h1:before {
+  content: "☀️";
+  position: absolute;
+  color: white;
+  left: -1.35em;
+  top: 50%;
+  transform: translateY(-50%);
+}
+h2{
     color:rgb(42, 17, 235);
     border: 2px solid black;
     border-radius: 10px;

@@ -14,23 +14,60 @@ console.log("都市名:"+data.name);
 }
 
 // 課題5-1 の関数 printDom() はここに記述すること
-function printDom(data) {
+function printDom(data) {  
+  
+  let result = document.querySelector("#result");
+result.innerHTML = "";
 
+    let h2 = document.createElement("h2");
+    h2.textContent = "世界の天気（検索結果1件）";
+    result.appendChild(h2);
+
+    let list = [
+        "緯度：" + data.coord.lon,
+        "経度：" + data.coord.lat,
+        "天気：" + data.weather[0].description,
+        "最低気温：" + data.main.temp_min,
+        "最高気温：" + data.main.temp_max,
+        "湿度：" + data.main.humidity,
+        "風速：" + data.wind.speed,
+        "風向：" + data.wind.deg,
+        "都市名：" + data.name
+    ];
+
+    for (let i = 0; i < list.length; i++) {
+        let p = document.createElement("p");
+        p.textContent = list[i];
+        result.insertAdjacentElement("beforeend", p);
+    }
 }
 
-// 課題6-1 のイベントハンドラ登録処理は以下に記述
 
+// 課題6-1 のイベントハンドラ登録処理は以下に記述
+let button = document.querySelector("#sendRequest");
+button.addEventListener("click", sendRequest);
 
 
 
 // 課題6-1 のイベントハンドラ sendRequest() の定義
 function sendRequest() {
+  let id = document.querySelector("#city").value;
 
+    let url =
+        "https://www.nishita-lab.org/web-contents/jsons/openweather/" +
+        id +
+        ".json";
+
+    axios.get(url)
+        .then(showResult)
+        .catch(showError)
+        .then(finish);
 }
 
 // 課題6-1: 通信が成功した時の処理は以下に記述
 function showResult(resp) {
-
+ let data = resp.data;
+    printDom(data);
 }
 
 // 課題6-1: 通信エラーが発生した時の処理
